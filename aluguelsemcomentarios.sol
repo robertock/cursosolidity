@@ -18,7 +18,7 @@ contract Aluguel {
     3 - 04/2020 = true
     */
     address payable public contaLocador;
-    address public owner;
+    address public contaLocatario;
 
     // exemplo de parametros para o construtor: Alice, Bob, 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4, 1
     constructor(    string memory _nomeLocador, 
@@ -29,7 +29,7 @@ contract Aluguel {
         locatario = _nomeLocatario;
         valor = _valorDoAluguel;
         contaLocador = _contaLocador;
-        owner = msg.sender;
+        contaLocatario = msg.sender;
     }
  
     function valorAtualDoAluguel() public view returns (uint256) {
@@ -67,7 +67,7 @@ contract Aluguel {
     
     
     function receberPagamento() public payable {
-        require(msg.sender==owner, "Pagador diferente do locatario");
+        require(msg.sender==contaLocatario, "Pagador diferente do locatario");
         require(msg.value>=valor, "Valor insuficiente");
         contaLocador.transfer(msg.value);
         statusPagamento.push(true);
@@ -88,4 +88,4 @@ contract Aluguel {
     }
 }
 
-//Sepolia: 0x0356D6dc1a57528a79fF6d42467Ea0b4329B681f
+//Sepolia: 0x6887525Fc688ccE49cF708B10d1BE70CE7e8b3F2
