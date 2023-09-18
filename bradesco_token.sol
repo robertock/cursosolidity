@@ -163,8 +163,8 @@ contract USDC is IERC20Metadata, Owned {
     }    
 
     constructor() {
-        myName = "BRL Aluno ";
-        mySymbol = "BRL@";
+        myName = "BRL Aluno 21";
+        mySymbol = "BRL@21";
         myDecimals = 2;
         mint(msg.sender, (1000000000 * (10 ** myDecimals)));
     }
@@ -241,3 +241,5 @@ contract USDC is IERC20Metadata, Owned {
         return true;
     }
 }
+
+//Sepolia: 0x71bA1e17C6dec0952fFcEbE70ceFa248580195c9
